@@ -1,0 +1,163 @@
+package mvc.dra.controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import mvc.dra.model.ImageProperties;
+
+public class MainController {
+
+    @FXML
+    private ImageView field00;
+
+    @FXML
+    private ImageView field20;
+
+    @FXML
+    private ImageView field40;
+
+    @FXML
+    private ImageView field60;
+
+    @FXML
+    private ImageView field11;
+
+    @FXML
+    private ImageView field31;
+
+    @FXML
+    private ImageView field51;
+
+    @FXML
+    private ImageView field71;
+
+    @FXML
+    private ImageView field02;
+
+    @FXML
+    private ImageView field22;
+
+    @FXML
+    private ImageView field42;
+
+    @FXML
+    private ImageView field62;
+
+    @FXML
+    private ImageView field13;
+
+    @FXML
+    private ImageView field33;
+
+    @FXML
+    private ImageView field53;
+
+    @FXML
+    private ImageView field73;
+
+    @FXML
+    private ImageView field04;
+
+    @FXML
+    private ImageView field24;
+
+    @FXML
+    private ImageView field44;
+
+    @FXML
+    private ImageView field64;
+
+    @FXML
+    private ImageView field15;
+
+    @FXML
+    private ImageView field35;
+
+    @FXML
+    private ImageView field55;
+
+    @FXML
+    private ImageView field75;
+
+    @FXML
+    private ImageView field06;
+
+    @FXML
+    private ImageView field26;
+
+    @FXML
+    private ImageView field46;
+
+    @FXML
+    private ImageView field66;
+
+    @FXML
+    private ImageView field17;
+
+    @FXML
+    private ImageView field37;
+
+    @FXML
+    private ImageView field57;
+
+    @FXML
+    private ImageView field77;
+    
+    private ImageView[] imageViewFields = {field00, field20, field40, field60, field11, field31, field51, field71, field02, field22, field42, field62, field13, field33, field53, field73, field04, field24, field44, field64, field15, field35, field55, field75, field06, field26, field46, field66, field17, field37, field57, field77};
+
+    private ImageView searchImageViewField(int x, int y) {
+    	ImageView img = new ImageView();
+    	ImageView f;
+    	for (int i=0; i<32; i++) {
+    		f = imageViewFields[i];
+    		System.out.println(f.getX());
+    		if(f.getX()==x && f.getY()==y) img=f;
+    	}
+    	return img;
+    }
+    
+    @FXML
+    void fieldClicked(MouseEvent event) {
+    	ImageView img = (ImageView)event.getSource();
+    	int x = (int)img.getX();
+    	int y = (int)img.getY();
+    	
+    	String url = img.getImage().getUrl();
+    	String name = ImageProperties.getImageName(url);
+    	
+    	if(name.equals("black.png")) {
+    		
+    		System.out.println(img.getId());
+    		
+    		if(x == 0) {
+    			System.out.println("1");
+    			ImageView field = searchImageViewField(x+1, y+1);
+    			System.out.println("2");
+    			System.out.println(field.getId());
+    			field.setImage(ImageProperties.selectedImage(url));
+    		}else if(x == 7) {
+    			
+    		}else {
+    			
+    		}
+    	}
+    	
+    	if(name.equals("white.png")) {
+    		img.setImage(ImageProperties.whiteImage(url));
+    		
+    		if(x == 0) {
+    			//searchImageViewField()
+    		}else if(x == 7) {
+    			
+    		}else {
+    			
+    		}
+    	}
+    	
+    	//System.out.println(img + "\n" + img.getX() + " " + img.getY() + "\n" + ImageProperties.getImageName(url) + "\n");
+    	
+    	/*Setting image
+    	img.setImage(ImageProperties.blackImage(url));*/
+    }
+
+}

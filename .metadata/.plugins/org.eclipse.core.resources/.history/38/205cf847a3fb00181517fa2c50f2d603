@@ -1,0 +1,5 @@
+package mvc.dra.model;
+
+public class ImageProperties {
+
+}

@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+C:\Users\Wojtek\PROZ\Zadanie-2\.metadata\.plugins\org.eclipse.jdt.core
+2699544402.index
+3303744787.index
+884986319.index
+977193789.index
+1843736190.index
+1978767795.index
+2517276046.index
+268458051.index
+68377881.index
+2195926738.index
+2158312854.index
+450292903.index
+3794211119.index
+2200194283.index
+2036168688.index
+1299478476.index
+2776517245.index
+1983892043.index

@@ -1,0 +1,11 @@
+package mvc.dra.model;
+
+public class ImageProperties {
+	static public String getImageName(String url){
+		String name;
+		int i = url.lastIndexOf("/view");
+		System.out.print(i);
+		name="ss";
+		return name;
+	}
+}

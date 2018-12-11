@@ -1,0 +1,233 @@
+package mvc.dra.controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import mvc.dra.model.ImageProperties;
+
+public class MainController {
+
+	@FXML
+	private ImageView field00;
+
+	@FXML
+	private ImageView field20;
+
+	@FXML
+	private ImageView field40;
+
+	@FXML
+	private ImageView field60;
+
+	@FXML
+	private ImageView field11;
+
+	@FXML
+	private ImageView field31;
+
+	@FXML
+	private ImageView field51;
+
+	@FXML
+	private ImageView field71;
+
+	@FXML
+	private ImageView field02;
+
+	@FXML
+	private ImageView field22;
+
+	@FXML
+	private ImageView field42;
+
+	@FXML
+	private ImageView field62;
+
+	@FXML
+	private ImageView field13;
+
+	@FXML
+	private ImageView field33;
+
+	@FXML
+	private ImageView field53;
+
+	@FXML
+	private ImageView field73;
+
+	@FXML
+	private ImageView field04;
+
+	@FXML
+	private ImageView field24;
+
+	@FXML
+	private ImageView field44;
+
+	@FXML
+	private ImageView field64;
+
+	@FXML
+	private ImageView field15;
+
+	@FXML
+	private ImageView field35;
+
+	@FXML
+	private ImageView field55;
+
+	@FXML
+	private ImageView field75;
+
+	@FXML
+	private ImageView field06;
+
+	@FXML
+	private ImageView field26;
+
+	@FXML
+	private ImageView field46;
+
+	@FXML
+	private ImageView field66;
+
+	@FXML
+	private ImageView field17;
+
+	@FXML
+	private ImageView field37;
+
+	@FXML
+	private ImageView field57;
+
+	@FXML
+	private ImageView field77;
+
+	private ImageView[] imageViewFields;
+
+	public void initialize() {
+		imageViewFields = new ImageView[32];
+
+		imageViewFields[0] = field00;
+		imageViewFields[1] = field20;
+		imageViewFields[2] = field40;
+		imageViewFields[3] = field60;
+		imageViewFields[4] = field11;
+		imageViewFields[5] = field31;
+		imageViewFields[6] = field51;
+		imageViewFields[7] = field71;
+		imageViewFields[8] = field02;
+		imageViewFields[9] = field22;
+		imageViewFields[10] = field42;
+		imageViewFields[11] = field62;
+		imageViewFields[12] = field13;
+		imageViewFields[13] = field33;
+		imageViewFields[14] = field53;
+		imageViewFields[15] = field73;
+		imageViewFields[16] = field04;
+		imageViewFields[17] = field24;
+		imageViewFields[18] = field44;
+		imageViewFields[19] = field64;
+		imageViewFields[20] = field15;
+		imageViewFields[21] = field35;
+		imageViewFields[22] = field55;
+		imageViewFields[23] = field75;
+		imageViewFields[24] = field06;
+		imageViewFields[25] = field26;
+		imageViewFields[26] = field46;
+		imageViewFields[27] = field66;
+		imageViewFields[28] = field17;
+		imageViewFields[29] = field37;
+		imageViewFields[30] = field57;
+		imageViewFields[31] = field77;
+	}
+	
+	boolean active = false;
+	int xp1 = -1;
+	int yp1 = -1;
+	ImageView s1;
+	
+	int xp2 = -1;
+	int yp2 = -1;
+	ImageView s2;
+	
+	ImageView activePiece;
+
+	private ImageView searchImageViewField(int x, int y) {
+		ImageView img = new ImageView();
+		for (ImageView i: imageViewFields) {
+			if (i.getX() == x && i.getY() == y)img = i;
+		}
+		return img;
+	}
+
+	@FXML
+	void fieldClicked(MouseEvent event) {
+		ImageView img = (ImageView) event.getSource();
+		int x = (int) img.getX();
+		int y = (int) img.getY();
+
+		String url = img.getImage().getUrl();
+		String name = ImageProperties.getImageName(url);
+		
+		if(active == true) {
+			if(name.equals("selected.png")) {				
+				img.setImage(activePiece.getImage());
+				activePiece.setImage(ImageProperties.emptyImage(url));
+				active = false;
+			}		
+		}
+		
+		if (name.equals("black.png")) {
+			activePiece = img;
+
+			System.out.println(img.getId());
+
+			if (x == 0) {
+				ImageView s1 = searchImageViewField(x + 1, y + 1);
+				if((ImageProperties.getImageName(s1.getImage().getUrl())).equals("empty.png")) {
+					s1.setImage(ImageProperties.selectedImage(url));
+					active = true;
+					xp1 = x;
+					yp1 = y;
+				}
+			} else if (x == 7) {
+				ImageView s1 = searchImageViewField(x - 1, y + 1);
+				if((ImageProperties.getImageName(s1.getImage().getUrl())).equals("empty.png")) {
+					s1.setImage(ImageProperties.selectedImage(url));
+					active = true;
+					xp1 = x;
+					yp1 = y;
+				}
+			} else {
+				ImageView s1 = searchImageViewField(x + 1, y + 1);
+				ImageView s2 = searchImageViewField(x - 1, y + 1);
+				if((ImageProperties.getImageName(s1.getImage().getUrl())).equals("empty.png")) {
+					s1.setImage(ImageProperties.selectedImage(url));
+					active = true;
+					xp1 = x;
+					yp1 = y;
+			}
+		}
+
+		if (name.equals("white.png")) {
+			img.setImage(ImageProperties.whiteImage(url));
+
+			if (x == 0) {
+				// searchImageViewField()
+			} else if (x == 7) {
+
+			} else {
+
+			}
+		}
+
+		// System.out.println(img + "\n" + img.getX() + " " + img.getY() + "\n" +
+		// ImageProperties.getImageName(url) + "\n");
+
+		/*
+		 * Setting image img.setImage(ImageProperties.blackImage(url));
+		 */
+	}
+
+}

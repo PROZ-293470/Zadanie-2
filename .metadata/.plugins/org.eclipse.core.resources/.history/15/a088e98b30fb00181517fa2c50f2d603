@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+/**
+ * @author Wojtek
+ *
+ */
+module Draughts {
+	requires javax.jms.api;
+	requires imqjmsra;
+	
+	opens jms to imqjmsra;
+	
+	requires javafx.fxml;
+	requires javafx.controls;
+	requires javafx.base;
+	requires javafx.graphics;
+	
+	opens mvc.dra to javafx.graphics;
+	opens mvc.dra.view to javafx.fxml;
+	opens mvc.dra.controller to javafx.fxml;
+}

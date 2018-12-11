@@ -1,0 +1,7 @@
+package mvc.dra.model;
+
+public class ImageProperties {
+	static public String getImageName(String url){
+		return "xD";
+	}
+}

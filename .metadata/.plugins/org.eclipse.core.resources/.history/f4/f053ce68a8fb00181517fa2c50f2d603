@@ -1,0 +1,30 @@
+package mvc.dra.model;
+
+import javafx.scene.image.Image;
+
+/**
+ * Klasa <code>ImageProperties</code>
+ * @author Wojtek
+ *
+ */
+
+
+public class ImageProperties {
+	
+	//Metoda zwracajaca nazwe pliku grafiki
+	static public String getImageName(String url){
+		String name;
+		int i = url.lastIndexOf("/view") + 6;
+		name = url.substring(i);
+		return name;
+	}
+	
+	static public Image blackImage(String url) {
+		int i = url.lastIndexOf("/view") + 6;
+		url = url.substring(i) + "black.png";
+		Image bIm = new Image(url);
+		return bIm;
+	}
+	
+	
+}

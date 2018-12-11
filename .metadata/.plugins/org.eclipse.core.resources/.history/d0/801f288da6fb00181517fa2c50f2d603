@@ -1,0 +1,22 @@
+package mvc.dra.model;
+
+
+/**
+ * Klasa <code>ImageProperties</code>
+ * @author Wojtek
+ *
+ */
+
+
+public class ImageProperties {
+	
+	//Metoda zwracajaca nazwe pliku grafiki
+	static public String getImageName(String url){
+		String name;
+		int i = url.lastIndexOf("/view") + 6;
+		name = url.substring(i);
+		return name;
+	}
+	
+	
+}
